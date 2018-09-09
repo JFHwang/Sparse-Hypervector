@@ -46,6 +46,16 @@ void binaryHypervector::populate(float sparsity) {
 	return void;
 }
 
+double binaryHypervector::distance(binaryHypervector v) {
+	// Implement a metric for distance here
+}
+
+/* TODO
+  Figure out how to handle returns for all operator overloads returning binaryHypervector type.
+  Is there really no choice other than to allocate an entire new hypervector?
+*/
+
+// Shift functions need some reworking. Return value isn't correct.
 binaryHypervector& binaryHypervector::operator>>(int shift) {
 	unsigned char curBit, prevBit;
 	memset(buf, 0, length*sizeof(char));	// Reset buf
@@ -72,24 +82,56 @@ binaryHypervector& binaryHypervector::operator<<(int shift) {
 	buf = tmp;
 }
 
+// These sets of functions assume that the lengths of the vectors match. TODO: Add error handling later
 binaryHypervector& binaryHypervector::operator|(binaryHypervector v2) {
 	// Implement bitwise or here
+	binaryHypervector& result = binaryHypervector(length);
+	for (int i = 0; i < length; i++) {
+		result[i] = hypervector[i] | v2.hypervector[i];
+	}
+	return result;
 }
 
+
+// 
 void binaryHypervector::operator|=(binaryHypervector v2) {
 	// Implement bitwise or= here
+	for (int i = 0; i < length; i++) {
+		hypervector[i] |= v2.hypervector[i];
+	}
 }
 
 binaryHypervector& binaryHypervector::operator&(binaryHypervector v2) {
 	// Implement bitwise and here
+	binaryHypervector& result = binaryHypervector(length);
+	for (int i = 0; i < length; i++) {
+		result[i] = hypervector[i] & v2.hypervector[i];
+	}
+	return result;
 }
-
+ 
 binaryHypervector& binaryHypervector::operator^(binaryHypervector v2) {
 	// Implement bitwise xor here
+	binaryHypervector& result = binaryHypervector(length);
+	for (int i = 0; i < length; i++) {
+		result[i] = hypervector[i] ^ v2.hypervector[i];
+	}
+	return result;
+}
+
+// This function is weird since it returns a reference to the whole char rather than the specified bit
+unsigned char& binaryHypervector::operator[](int index) {
+	return hypervector[index];
 }
 
 // Global operator overloads
 void operator+=(std::vector<int>& v1, binaryHypervector v2)
 {
 	// Add binary hypervector to vector.
+	for (int i = 0; i < v2.getLength() / 8; i++) {
+		for (int bitnum = 0; bitnum < 8; bitnum++) {
+			v1[i*8 + bitnum] += static_cast<int>(v2[i] | (1 << bitnum));
+		}
+	}
 }
+

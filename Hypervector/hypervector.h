@@ -15,13 +15,14 @@ public:
 	binaryHypervector() {}
 	int getLength();
 	void populate(float sparsity);
+	double binaryHypervector::distance(binaryHypervector v);
 	binaryHypervector& binaryHypervector::operator>>(int shift);
 	binaryHypervector& binaryHypervector::operator<<(int shift);
 	binaryHypervector& binaryHypervector::operator|(binaryHypervector v2);
 	void binaryHypervector::operator|=(binaryHypervector v2);
 	binaryHypervector& binaryHypervector::operator&(binaryHypervector v2);
 	binaryHypervector& binaryHypervector::operator^(binaryHypervector v2);
-	
+	unsigned char& binaryHypervector::operator[](int index);
 };
 
 

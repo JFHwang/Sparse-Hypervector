@@ -7,95 +7,80 @@
 #include <vector>
 #include "hypervector.h"
 
+#define BUFSIZE 1024*1024
+#define DIMENSION 10'000
+#define SPARSITY .2
+#define WINDOWSIZE 4
+
 int main()
 {
-	char filename[256];
-	const long long dimension = 10'000;	// Number of items in hypervector
-	const float sparsity = .2;		// Number of 1's within hypervector
-	const int windowSize = 4;
-	std::map <char, binaryHypervector> letterHV;
 
-	binaryHypervector permutationHV(dimension);
+	std::map <char, binaryHypervector> letterHVs;
 	std::map<std::string, binaryHypervector> languageHVs;
-	std::vector<int> count(dimension);
+	
 	std::vector<std::string> languages = {"filename1", "filename2", "filename3"};
-	int error;
-	const long long bufsize = 1024 * 1024;	// 1 Megabyte buffer?
-	unsigned char buf[bufsize];
+	std::vector<std::string> testfiles = { "testfile1", "testfile2", "testfile3" };
 
 	// Training
 	for (std::string language : languages) {
-		FILE * fh = fopen(language.c_str(), "r");
-		if (fh == NULL) { error = 1; goto errorhandling; }
-
-		// Keep looping 1 buffer at a time until EoF
-		int bytesread = bufsize;
-		while (bytesread == bufsize) {
-			bytesread = fread(buf, sizeof(char), bufsize, fh);
-
-			for (int i = 0; i < bytesread; i++) {
-
-				// If a letter has not been seen before, create a custom hypervector for it.
-				if (letterHV.find(buf[i]) == letterHV.end()) {
-					letterHV[buf[i]] = binaryHypervector(dimension);
-					letterHV[buf[i]].populate(sparsity);
-				}
-
-				// Implement viewing window/ letter vector combining here.
-				for (int j = 0; j < windowSize; j++) {
-					permutationHV |= letterHV[buf[j]] << j;
-				}
-				count += permutationHV;
-			}
-		}
-		languageHVs[language] = thresh(count);
-		fclose(fh);
+		languageHVs[language] = genHV(language, letterHVs);
 	}
 
-
-
 	// Testing
-	std::vector<std::string> testfiles = { "testfile1", "testfile2", "testfile3" };
-
-	for (std::string file : testfiles) {
-		FILE * fh = fopen(file.c_str(), "r");
-		if (fh == NULL) { error = 1; goto errorhandling; }
-
-		// Keep looping 1 buffer at a time until EoF
-		int bytesread = bufsize;
-		while (bytesread == bufsize) {
-			bytesread = fread(buf, sizeof(char), bufsize, fh);
-
-			for (int i = 0; i < bytesread; i++) {
-
-				// If a letter has not been seen before, skip it.
-				if (letterHV.find(buf[i]) == letterHV.end()) {
-					continue;
-				}
-
-				// Implement viewing window/ letter vector combining here.
-				for (int j = 0; j < windowSize; j++) {
-					permutationHV |= letterHV[buf[j]] << j;
-				}
-				count += permutationHV;
-			}
-		}
-		fclose(fh);
+	for (std::string testfile : testfiles) {
+		binaryHypervector test = genHV(testfile, letterHVs);
 
 		// Make a prediction
-		binaryHypervector test = thresh(count);
 		double minDist = INT32_MAX;
 		std::string prediction;
 		for (std::string language : languages) {
-			double dist = distance(languageHVs[language], test);
+			double dist = languageHVs[language].distance(test);
 			if (dist < minDist) {
 				minDist = dist;
 				prediction = language;
 			}
 		}
-		fprintf(stderr, "Test file %s is of the language %s\n", file, prediction);
+		fprintf(stderr, "Test file %s is of the language %s\n", testfile, prediction);
 	}
+}
 
+
+
+
+
+
+binaryHypervector& genHV(std::string filename, std::map<char, binaryHypervector>& letterHVs) {
+	int error = 0;
+	unsigned char buf[BUFSIZE];
+	std::vector<int> accum(DIMENSION);
+	binaryHypervector permutationHV(DIMENSION);
+
+	FILE * fh = fopen(filename.c_str(), "r");
+	if (fh == NULL) { error = 1; goto errorhandling; }
+
+	// Keep looping 1 buffer at a time until EoF
+	int bytesread = BUFSIZE;
+	while (bytesread == BUFSIZE) {
+		bytesread = fread(buf, sizeof(char), BUFSIZE, fh);
+
+		for (int i = 0; i < bytesread; i++) {
+			// If a letter has not been seen before, create a custom letter hypervector for it.
+			if (letterHVs.find(buf[i]) == letterHVs.end()) {
+				letterHVs[buf[i]] = binaryHypervector(DIMENSION);
+				letterHVs[buf[i]].populate(SPARSITY);
+			}
+
+			// Implement viewing window/ letter vector combining here.
+			for (int j = 0; j < WINDOWSIZE; j++) {
+				permutationHV |= letterHVs[buf[j]] << j;
+			}
+			accum += permutationHV;
+		}
+	}
+	fclose(fh);
+
+	binaryHypervector& result = thresh(accum);
+	return result;
 
 
 errorhandling:
@@ -107,31 +92,9 @@ errorhandling:
 
 
 
-double distance(binaryHypervector v1, binaryHypervector v2) {
-	// Implement a metric for distance here
-}
-
+// Converts accumulation vector into a binary Hypervector
 binaryHypervector& thresh(std::vector<int> count) {
 	// This function removes items in count which are too small
 }
 
 
-
-
-
-/*
-* Function: cudaRNG
-*		Uses CUDA helper functions to generate numerous random numbers
-*
-* binaryHypervector: The binary hypervector containing the initial values.
-*
-*/
-void cudaRNG(unsigned char * binaryHypervector) {
-
-
-}
-
-void parallelXOR(unsigned char * binaryHypervector) {
-
-
-}
