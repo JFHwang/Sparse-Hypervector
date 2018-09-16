@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CudaCompile Include="kernel.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="hypervector.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hypervector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Dataset">
+      <UniqueIdentifier>{b2cc7cfd-e0ff-4067-8e31-6d5e13d81b29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dataset\Training">
+      <UniqueIdentifier>{5275278d-b335-445f-acff-8ea6b184507b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dataset\Test">
+      <UniqueIdentifier>{b96810d4-2869-4a7a-ac6d-c58aee904ddb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="HDC-Language-Recognition\training_texts\afr.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\afrikaans.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\bul.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\bulgarian.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\ces.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\czech.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\dan.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\danish.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\deu.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\dutch.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\ell.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\eng.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\eng_original.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\engde.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\english.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\est.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\estonian.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\fin.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\finnish.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\fra.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\french.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\german.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\greek.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\hamlet_english_processed.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\hamlet_finnish_processed.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\hun.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\hungarian.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\ita.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\italian.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\lav.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\lit.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\nld.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\nob.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\norwegian.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\persian.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\pol.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\polish.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\por.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\portuguese.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\romanian.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\ron.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\short.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\slk.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\slovak.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\slovenian.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\slv.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\spa.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\spanish.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\swe.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\swedish.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\training_texts\unknown1.txt">
+      <Filter>Dataset\Training</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\bul_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\ces_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\dan_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\deu_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\ell_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\eng_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\est_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\spa_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\fin_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\fra_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\hun_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\ita_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\lit_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\lav_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\nld_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\pol_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\por_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\swe_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\slv_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\slk_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+    <Text Include="HDC-Language-Recognition\testing_texts\ron_test.txt">
+      <Filter>Dataset\Test</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

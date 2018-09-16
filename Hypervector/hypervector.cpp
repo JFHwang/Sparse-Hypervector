@@ -43,7 +43,7 @@ void binaryHypervector::populate(float sparsity) {
 
 	}
 	*/
-	return void;
+	return;
 }
 
 double binaryHypervector::distance(binaryHypervector v) {
